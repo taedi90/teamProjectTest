@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://mybatis.org/schema/mybatis-spring
+       http://mybatis.org/schema/mybatis-spring.xsd">
 
     <!--  properties 암호화(jasypt) 설정 -->
     <bean id="encryptorConfig" class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
@@ -31,11 +35,14 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--    Mapper 클래스와 .xml 파일명이 일치하지 않을 경우 경로 설정 필요    -->
-        <property name="mapperLocations" value="classpath:/sqlmap/**/*_SQL.xml"/>
+        <!-- Mapper 클래스와 .xml 파일명이 일치하지 않을 경우 경로 설정 필요 -->
+        <property name="mapperLocations" value="classpath:/sqlmap/mysql/**/*_SQL.xml"/>
     </bean>
-    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg index="0" ref="sqlSessionFactory"/>
-    </bean>
+
+    <mybatis-spring:scan base-package="kr.or.yi.teamProjectTest.dao" />
+
+<!--    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">-->
+<!--        <constructor-arg index="0" ref="sqlSessionFactory"/>-->
+<!--    </bean>-->
 
 </beans>
