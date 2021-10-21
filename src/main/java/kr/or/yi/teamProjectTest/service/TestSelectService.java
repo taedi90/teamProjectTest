@@ -1,9 +1,10 @@
 package kr.or.yi.teamProjectTest.service;
 
-import kr.or.yi.teamProjectTest.dto.TestDto;
+import kr.or.yi.teamProjectTest.dto.Test;
 
 import java.util.List;
 
 public interface TestSelectService {
-    List<TestDto> selectTest();
+    List<Test> selectList();
+
 }

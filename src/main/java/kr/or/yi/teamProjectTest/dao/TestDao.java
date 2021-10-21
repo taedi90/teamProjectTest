@@ -1,9 +1,11 @@
 package kr.or.yi.teamProjectTest.dao;
 
-import kr.or.yi.teamProjectTest.dto.TestDto;
+import kr.or.yi.teamProjectTest.dto.Test;
 
 import java.util.List;
 
 public interface TestDao {
-    public List<TestDto> selectTest();
+    List<Test> selectList();
+    int insert(Test test);
+    int delete(Test test);
 }

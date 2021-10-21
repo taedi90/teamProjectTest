@@ -7,9 +7,10 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class TestDto {
+@Builder
+public class Test {
     @NonNull
     private long no;
     @NonNull
-    private String data;
+    private String dataTest;
 }
